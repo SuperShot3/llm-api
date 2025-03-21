@@ -1,7 +1,3 @@
-Absolutely! Here's a clear and professional **README.md** for your FastAPI-powered local LLM API using `llama-cpp-python`.
-
----
-
 ### 📄 `README.md`
 
 ```markdown
