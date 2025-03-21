@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from llama_cpp import Llama
 import psutil
 import time, os
+from fastapi.middleware.cors import CORSMiddleware
 
 # Load the AI model
 model_path = r"C:\Users\DELL\Model\models\mistral\capybarahermes-2.5-mistral-7b.Q4_K_M.gguf"
@@ -13,6 +14,14 @@ app = FastAPI()
 
 class Query(BaseModel):
     message: str
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # или конкретный адрес ["http://192.168.1.99"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def read_root():
@@ -77,5 +86,7 @@ def get_metrics():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=3333)
+    uvicorn.run(app, host="0.0.0.0", port=3333)
+
+
 
