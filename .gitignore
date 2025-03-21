@@ -1,0 +1,6 @@
+credentials.py
+.env
+models/
+chat_memory.txt
+__pycache__/
+*.pyc
